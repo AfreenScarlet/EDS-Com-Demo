@@ -20,8 +20,16 @@ import { getHeaders } from '../configs.js';
 import { fetchPlaceholders } from '../aem.js';
 
 export const IMAGES_SIZES = {
-  width: 960,
-  height: 1191,
+  width: 450,
+  height: 450,
+  mobile: {
+    width: 300,
+    height: 300,
+  },
+  desktop: {
+    width: 450,
+    height: 450,
+  }
 };
 
 await initializeDropin(async () => {
@@ -75,11 +83,14 @@ async function preloadImageMiddleware(data) {
   if (image) {
     await UI.render(Image, {
       src: image,
-      ...IMAGES_SIZES.mobile,
+      ...IMAGES_SIZES,
       params: {
-        ...IMAGES_SIZES,
+        ...IMAGES_SIZES.mobile,
+        ...IMAGES_SIZES.desktop
       },
       loading: 'eager',
+      fetchpriority: 'high',
+      isDiscoverable: true
     })(document.createElement('div'));
   }
   return data;

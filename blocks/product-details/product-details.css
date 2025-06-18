@@ -1,6 +1,11 @@
 /* stylelint-disable no-empty-source */
 /* stylelint-disable selector-class-pattern */
 
+.product-details-wrapper {
+  min-height: 700px;
+}
+
+
 .product-details__wrapper {
   display: grid;
   grid-template-columns: repeat(var(--grid-1-columns), 1fr);
@@ -72,6 +77,17 @@
 .product-details__attributes {
   margin-top: var(--spacing-xsmall);
 }
+
+.product-details .product-details__short-description {
+  min-height: 30px;
+}
+
+.product-details p {
+  min-height: 30px;
+  font-size: 16px;
+  margin: 0;
+}
+
 
 @media (width >= 900px) {
   .product-details__wrapper {
